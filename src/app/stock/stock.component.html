@@ -1,0 +1,18 @@
+<p>
+  stock works!
+</p>
+<p>
+  {{stockId}}
+</p>
+<p>
+  {{isPro}}
+</p>
+<p>
+  {{num}}
+</p>
+<p>
+  <input type="button" (click)="foucs = !foucs" value="关注">
+</p>
+<a [routerLink]="['./']">买家信息</a>
+<a [routerLink]="['./seller',100]">卖家信息</a>
+<router-outlet></router-outlet>

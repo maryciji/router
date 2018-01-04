@@ -1,0 +1,10 @@
+<a [routerLink]="['/']">home</a>
+<!--<a [routerLink]="['/stock']" [queryParams]="{id:1}">stock</a>-->
+<a [routerLink]="['/stock',2]">stock</a>
+<input type="button" value="stock" (click)="toStockDetail()">
+
+<a [routerLink]="[{outlets:{primary: 'home',aux:'consult'}}]">开始咨询</a>
+<a [routerLink]="[{outlets:{aux:null}}]">关闭咨询</a>
+
+<router-outlet></router-outlet>
+<router-outlet name="aux"></router-outlet>
