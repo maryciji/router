@@ -9,19 +9,24 @@ import {any} from 'codelyzer/util/function';
 })
 export class StockComponent implements OnInit {
 
-  private stockId: number;
+  private stock: Stock;
   private isPro: boolean;
   private num: string;
   private foucs: boolean = false;
 
   constructor(private  routeInfo: ActivatedRoute) {
+
   }
 
   ngOnInit() {
-    /*参数订阅*/
-    this.routeInfo.params.subscribe((params: Params) => this.stockId = params['id']);
+    this.routeInfo.data.subscribe((data: { stock: Stock }) => {
+      this.stock = data.stock;
+    });
     this.isPro = this.routeInfo.snapshot.data[0]['isPro'];
-    this.num = this.routeInfo.snapshot.data[0]['num'];
+    /*参数订阅*/
+    /* this.routeInfo.params.subscribe((params: Params) => this.stockId = params['id']);
+     this.isPro = this.routeInfo.snapshot.data[0]['isPro'];
+     this.num = this.routeInfo.snapshot.data[0]['num'];*/
     /*1    快照参数传递*/
     /*this.stockId = this.routeInfo.snapshot.queryParams['id'];*/
     /*2    快照参数传递*/
@@ -32,4 +37,8 @@ export class StockComponent implements OnInit {
     return this.foucs;
   }
 
+}
+export class Stock {
+  constructor(public id: number, public name: string) {
+  }
 }
